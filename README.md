@@ -1,12 +1,11 @@
 # line-pay-python-example
-LINE Pay APIをPythonから叩いてみた。
+LINE Pay API For Python
 
-## 参考情報
+## Ref.
 - [LINE Pay APIを使ってアプリに決済を組み込む方法](https://qiita.com/nkjm/items/b4f70b4daaf343a2bedc)
 
-## 必要なもの
-- LINE Pay Sandbox環境
-- 固定IPがあるサーバー
+## Requirements
+- LINE Pay Sandbox Api
 - Python 3.6
 
 ## Try it
