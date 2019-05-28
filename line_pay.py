@@ -85,6 +85,7 @@ class LinePay:
         return (order_id, self.request(method=method, url=line_pay_endpoint, body=body))
 
     def confirm_payments(self, transaction_id: str, amount: float, currency: str) -> dict:
+        print("1:confirm_payments")
         line_pay_url = self.__line_pay_url
         line_pay_endpoint = f'{line_pay_url}/v2/payments/{transaction_id}/confirm'
         method = 'POST'
@@ -104,6 +105,7 @@ class LinePay:
         return self.request(method=method, url=line_pay_endpoint, body=body)
 
     def get_authorization_payments(self, transaction_id: list=[], order_id: list=[]) -> dict:
+        print("2:get_authorization_payments")
         line_pay_url = self.__line_pay_url
         line_pay_endpoint = f'{line_pay_url}/v2/payments/authorizations'
         method = 'GET'
@@ -138,6 +140,7 @@ class LinePay:
     def payment_preapprovedpay_payments(
             self, reg_key: str, product_name: str, amount: float,
             currency: str, capture: bool=True) -> (str, dict):
+        print("3: payment_preapprovedpay_payments")
         line_pay_url = self.__line_pay_url
         line_pay_endpoint = f'{line_pay_url}/v2/payments/preapprovedPay/{reg_key}/payment'
         method = 'POST'

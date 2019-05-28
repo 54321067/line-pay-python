@@ -6,7 +6,7 @@ from models import db, db_url, Transactions
 LINE_PAY_URL = 'https://sandbox-api-pay.line.me'
 LINE_PAY_CHANNEL_ID = '1648874408'
 LINE_PAY_CHANNEL_SECRET = '3822e8ded73e612481428002aee326ad'
-LINE_PAY_CONFIRM_URL = 'http://localhost:5000/pay/confirm'
+LINE_PAY_CONFIRM_URL = 'http://localhost:8000/pay/confirm'
 app = Flask(__name__)
 pay = LinePay(channel_id=LINE_PAY_CHANNEL_ID, channel_secret=LINE_PAY_CHANNEL_SECRET,
               line_pay_url=LINE_PAY_URL, confirm_url=LINE_PAY_CONFIRM_URL)
@@ -19,14 +19,14 @@ def index():
 
 @app.route("/pay/reserve", methods=['POST'])
 def pay_reserve():
-    product_name = "チョコレート"
-    amount = 1
-    currency = "JPY"
+    #productImageUrl = 'https://www.qualitymatters.org/sites/default/files/illustrations-infographics/CPE-bug-300px_0.png'
+    product_name = "CPESHOP"
+    amount = 1000
+    currency = "THB"
 
     (order_id, response) = pay.request_payments(product_name=product_name, amount=amount, currency=currency)
-    print(response["returnCode"])
-    print(response["returnMessage"])
-
+    print('1:',response["returnCode"])
+    print('2:',response["returnMessage"])
     transaction_id = response["info"]["transactionId"]
     print(order_id, transaction_id, product_name, amount, currency)
     obj = Transactions(transaction_id=transaction_id, order_id=order_id,
@@ -47,8 +47,10 @@ def pay_confirm():
 
     response = pay.confirm_payments(transaction_id=transaction_id, amount=obj.amount, currency=obj.currency)
     print(response["returnCode"])
+    if(response["returnCode"] == "0000"):
+        print("Paid")
     print(response["returnMessage"])
-
+    print('SUCCESS:')
     db.session.query(Transactions).filter(Transactions.transaction_id == transaction_id).delete()
     db.session.commit()
     db.session.close()
