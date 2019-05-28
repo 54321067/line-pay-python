@@ -4,8 +4,8 @@ from models import db, db_url, Transactions
 
 
 LINE_PAY_URL = 'https://sandbox-api-pay.line.me'
-LINE_PAY_CHANNEL_ID = '1648874408'
-LINE_PAY_CHANNEL_SECRET = '3822e8ded73e612481428002aee326ad'
+LINE_PAY_CHANNEL_ID = 'Your LINE_PAY_CHANNEL_ID'
+LINE_PAY_CHANNEL_SECRET = 'Your LINE_PAY_CHANNEL_SECRET'
 LINE_PAY_CONFIRM_URL = 'http://localhost:8000/pay/confirm'
 app = Flask(__name__)
 pay = LinePay(channel_id=LINE_PAY_CHANNEL_ID, channel_secret=LINE_PAY_CHANNEL_SECRET,
