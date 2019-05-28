@@ -1,4 +1,4 @@
-# line-pay-python-example
+# line-pay-python-Heroku
 LINE Pay API For Python
 
 ## Ref.
