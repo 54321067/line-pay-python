@@ -19,7 +19,8 @@ python app.py
 from flask import Flask, render_template, redirect, request
 from line_pay import LinePay
 from models import db, db_url, Transactions
-
+from firebase import firebase
+import datetime
 
 LINE_PAY_URL = 'https://sandbox-api-pay.line.me'
 LINE_PAY_CHANNEL_ID = 'your channel'
