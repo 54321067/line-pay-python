@@ -2,7 +2,7 @@
 LINE Pay API For Python
 
 ## Ref.
-- [LINE Pay APIを使ってアプリに決済を組み込む方法](https://qiita.com/nkjm/items/b4f70b4daaf343a2bedc)
+- [LINE Pay API](https://qiita.com/nkjm/items/b4f70b4daaf343a2bedc)
 
 ## Requirements
 - LINE Pay Sandbox Api
